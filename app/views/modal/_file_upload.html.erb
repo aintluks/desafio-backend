@@ -6,16 +6,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <%= form_for @file_upload do |form| %>
           <div class="input-group mb-3">
-            <input type="file" accept=".csv" class="form-control" id="csv_file">
-            <label class="input-group-text" for="csv_file">Upload</label>
+            <%= form.file_field :csv_file, class: "form-control", accept: ".csv" %>
+            <%= form.label "Upload", class: "input-group-text" %>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Enviar</button>
+          <div class="d-flex justify-content-end">
+            <%= form.submit "Enviar", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
