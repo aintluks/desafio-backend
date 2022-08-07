@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_06_163710) do
+ActiveRecord::Schema.define(version: 2022_08_07_142207) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,10 +33,36 @@ ActiveRecord::Schema.define(version: 2022_08_06_163710) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "deputies", force: :cascade do |t|
+    t.string "tx_nome_parlamentar"
+    t.string "cpf"
+    t.string "ide_cadastro"
+    t.string "foto"
+    t.string "sg_uf"
+    t.string "sg_partido"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer "deputy_id", null: false
+    t.string "dat_emissao"
+    t.string "txt_fornecedor"
+    t.string "vlr_liquido"
+    t.string "num_mes"
+    t.string "num_ano"
+    t.string "url_documento"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deputy_id"], name: "index_expenses_on_deputy_id"
+  end
+
   create_table "file_uploads", force: :cascade do |t|
+    t.string "filename"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "expenses", "deputies"
 end
