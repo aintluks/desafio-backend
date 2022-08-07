@@ -1,1 +1,42 @@
-<h1>...</h1>
+<main>
+	<% if !@deputies.present? %>
+		<section class="py-5 text-center container">
+			<div class="row py-lg-5">
+				<div class="col-lg-6 col-md-8 mx-auto">
+					<h1 class="fw-light">Não temos dados...</h1>
+					<p class="lead text-muted">Faça upload de algum
+						<a target="_blank" href="https://dadosabertos.camara.leg.br/swagger/api.html#staticfile">
+							arquivo de despesas
+						</a>
+						para visualizar os dados.
+					</p>
+				</div>
+			</div>
+		</section>
+	<% else %>
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+					<% @deputies.each do |deputy| %>
+						<div class="col">
+							<div class="card mb-3" style="max-width: 540px;">
+								<div class="row g-0">
+									<div class="col-md-4">
+										<img src="<%= deputy.foto %>" class="img-fluid rounded-start" alt="Deputados do Piauí">
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<p class="card-title"><strong><%= deputy.tx_nome_parlamentar %></strong></p>
+											<p class="card-text">Partido: <%= deputy.sg_partido %> UF: <%= deputy.sg_uf %></p>
+											<%= link_to "Ver mais", deputy_path(deputy), class: "btn btn-primary text-end" %>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>        
+				</div>
+			</div>
+		</div>
+	<% end %>
+</main>

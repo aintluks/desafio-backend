@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: "deputies#index"
 
   post "file_uploads", to: "file_uploads#create"
+
+  resources :deputies, only: :show
 end
