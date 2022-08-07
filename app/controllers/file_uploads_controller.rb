@@ -3,7 +3,7 @@ class FileUploadsController < ApplicationController
     @file_upload = FileUpload.new(file_upload_params)
     @file_exists = FileUpload.where(filename: file_upload_params[:csv_file].original_filename)
 
-    if !@file_exists && @file_upload.save
+    if !@file_exists.present? && @file_upload.save
       CsvImporter.perform(csv: @file_upload.csv)
     else
       flash[:alert] = "Arquivo já existe."
