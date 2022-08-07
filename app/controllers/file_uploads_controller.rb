@@ -13,7 +13,7 @@ class FileUploadsController < ApplicationController
   end
 
   private
-  
+
   def file_upload_params
     params.require(:file_upload).permit(:csv_file)
   end
