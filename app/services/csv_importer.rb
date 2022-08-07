@@ -26,7 +26,7 @@ class CsvImporter
   end
 
   def deputy_fields(row)
-    @deputy_fields[:tx_nome_parlamentar] = row['txNomeParlamentar']
+    @deputy_fields[:tx_nome_parlamentar] = row["﻿\"txNomeParlamentar\""] || row[0]
     @deputy_fields[:cpf] = row['cpf']
     @deputy_fields[:ide_cadastro] = row['ideCadastro']
     @deputy_fields[:sg_uf] = row['sgUF']
