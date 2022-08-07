@@ -1,11 +1,15 @@
 class FileUploadsController < ApplicationController
   def create
     @file_upload = FileUpload.new(file_upload_params)
+    @file_exists = FileUpload.where(filename: file_upload_params[:csv_file].original_filename)
 
-    if @file_upload.save
+    if !@file_exists && @file_upload.save
       CsvHandler.perform(csv: @file_upload.csv)
-      redirect_to root_path
+    else
+      flash[:alert] = "Arquivo já existe."
     end
+
+    redirect_to root_path
   end
 
   private
