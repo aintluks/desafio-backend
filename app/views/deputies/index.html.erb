@@ -15,6 +15,7 @@
 		</section>
 	<% else %>
 		<div class="album py-5 bg-light">
+			<h1 class="fw-light text-center">Deputados do Estado do Piauí</h1>
 			<div class="container">
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 					<% @deputies.each do |deputy| %>
@@ -27,7 +28,7 @@
 									<div class="col-md-8">
 										<div class="card-body">
 											<p class="card-title"><strong><%= deputy.tx_nome_parlamentar %></strong></p>
-											<p class="card-text">Partido: <%= deputy.sg_partido %> UF: <%= deputy.sg_uf %></p>
+											<p class="card-text">Partido: <%= deputy.sg_partido %></p>
 											<%= link_to "Ver mais", deputy_path(deputy), class: "btn btn-primary text-end" %>
 										</div>
 									</div>
