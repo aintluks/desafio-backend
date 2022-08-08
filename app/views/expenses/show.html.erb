@@ -1,0 +1,23 @@
+<h2>Despesas</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Valor</th>
+        <th scope="col">Estabelecimento</th>
+        <th scope="col">Data Emissão</th>
+        <th scope="col">Nota Fiscal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @expenses.each do |expense| %>
+        <tr>
+          <td><%= number_to_currency(expense.vlr_liquido, locale: "pt-BR") %></td>
+          <td><%= expense.txt_fornecedor %></td>
+          <td><%= I18n.l(expense.dat_emissao, format: :default) if expense.dat_emissao %></td>
+          <td><a target="blank_" href="<%= expense.url_documento %>">Link nota fiscal</a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   post "file_uploads", to: "file_uploads#create"
 
-  resources :deputies, only: :show
+  get "deputy/:id/expenses", to: "expenses#show", as: 'expenses'
 end
