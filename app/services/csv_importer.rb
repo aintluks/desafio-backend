@@ -35,7 +35,7 @@ class CsvImporter
   end
 
   def expenses_fields(row)
-    @expenses_fields[:dat_emissao] = row['datEmissao']
+    @expenses_fields[:dat_emissao] = row['datEmissao'].to_time if row['datEmissao']
     @expenses_fields[:txt_fornecedor] = row['txtFornecedor']
     @expenses_fields[:vlr_liquido] = row['vlrLiquido']
     @expenses_fields[:url_documento] = row['urlDocumento']

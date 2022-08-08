@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_08_07_142207) do
 
   create_table "expenses", force: :cascade do |t|
     t.integer "deputy_id", null: false
-    t.string "dat_emissao"
+    t.datetime "dat_emissao"
     t.string "txt_fornecedor"
     t.string "vlr_liquido"
     t.string "num_mes"
