@@ -4,7 +4,7 @@ class CreateExpenses < ActiveRecord::Migration[6.0]
       t.references :deputy, null: false, foreign_key: true
       t.datetime :dat_emissao
       t.string :txt_fornecedor
-      t.string :vlr_liquido
+      t.decimal :vlr_liquido, precision: 8, scale: 2
       t.string :num_mes
       t.string :num_ano
       t.string :url_documento
