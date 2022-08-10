@@ -7,6 +7,5 @@ RSpec.describe Deputy, type: :model do
 
   context 'validations' do
     it { should validate_uniqueness_of :ide_cadastro }
-    it { should validate_uniqueness_of :cpf }
   end
 end
