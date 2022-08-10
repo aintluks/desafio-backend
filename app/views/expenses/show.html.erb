@@ -1,6 +1,6 @@
 <div class="text-center m-2">
   <h2>Despesas pela Cota para Exercício da Atividade Parlamentar</h2>
-  <h3>Maior valor gasto foi de: <%= number_to_currency(@greater_expense, locale: "pt-BR") %></h3>
+  <h3>Maior valor gasto foi de: <%= number_to_currency(@higher_spending, locale: "pt-BR") %></h3>
   <h3>Total gasto foi de: <%= number_to_currency(@total, locale: "pt-BR") %></h3>
 </div>
 
@@ -10,7 +10,7 @@
 </div>
 
 <div class="m-5">
-  <em>ps: maior gasto está demarcado dentro da tabela</em>
+  <em>ps: maior(es) gasto(s) está demarcado dentro da tabela</em>
 </div>
 
 <div class="p-5 m-2">
@@ -26,7 +26,7 @@
       </thead>
       <tbody>
         <% @expenses.each do |expense| %>
-          <tr class="<%= 'bg-danger' if expense.vlr_liquido == @greater_expense %>">
+          <tr class="<%= 'bg-danger' if expense.vlr_liquido == @higher_spending %>">
             <td><%= number_to_currency(expense.vlr_liquido, locale: "pt-BR") %></td>
             <td><%= expense.txt_fornecedor %></td>
             <td><%= I18n.l(expense.dat_emissao, format: :default) if expense.dat_emissao %></td>
