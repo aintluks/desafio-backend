@@ -5,8 +5,6 @@ class CreateExpenses < ActiveRecord::Migration[6.0]
       t.datetime :dat_emissao
       t.string :txt_fornecedor
       t.decimal :vlr_liquido, precision: 8, scale: 2
-      t.string :num_mes
-      t.string :num_ano
       t.string :url_documento
 
       t.timestamps
