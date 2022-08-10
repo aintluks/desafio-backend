@@ -1,23 +1,39 @@
-<h2>Despesas</h2>
-<div class="table-responsive">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col">Valor</th>
-        <th scope="col">Estabelecimento</th>
-        <th scope="col">Data Emissão</th>
-        <th scope="col">Nota Fiscal</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @expenses.each do |expense| %>
+<div class="text-center m-2">
+  <h2>Despesas pela Cota para Exercício da Atividade Parlamentar</h2>
+  <h3>Maior valor gasto foi de: <%= number_to_currency(@greater_expense, locale: "pt-BR") %></h3>
+  <h3>Total gasto foi de: <%= number_to_currency(@total, locale: "pt-BR") %></h3>
+</div>
+
+<!-- chartkick <3 -->
+<div class="m-5">
+  <%= column_chart @data, colors: ["#b00", "#666"] %>
+</div>
+
+<div class="m-5">
+  <em>ps: maior gasto está demarcado dentro da tabela</em>
+</div>
+
+<div class="p-5 m-2">
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead class="table-dark">
         <tr>
-          <td><%= number_to_currency(expense.vlr_liquido, locale: "pt-BR") %></td>
-          <td><%= expense.txt_fornecedor %></td>
-          <td><%= I18n.l(expense.dat_emissao, format: :default) if expense.dat_emissao %></td>
-          <td><a target="blank_" href="<%= expense.url_documento %>">Link nota fiscal</a></td>
+          <th scope="col">Valor</th>
+          <th scope="col">Estabelecimento</th>
+          <th scope="col">Data Emissão</th>
+          <th scope="col">Nota Fiscal</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @expenses.each do |expense| %>
+          <tr class="<%= 'bg-danger' if expense.vlr_liquido == @greater_expense %>">
+            <td><%= number_to_currency(expense.vlr_liquido, locale: "pt-BR") %></td>
+            <td><%= expense.txt_fornecedor %></td>
+            <td><%= I18n.l(expense.dat_emissao, format: :default) if expense.dat_emissao %></td>
+            <td><a target="blank_" href="<%= expense.url_documento %>">Link nota fiscal</a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
