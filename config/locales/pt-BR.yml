@@ -49,3 +49,8 @@ pt-BR:
       link_to: arquivo de despesas
       expenses: Despesas
       political_party: Partido
+  file_uploads:
+    form:
+      title: Upload do Arquivo
+      upload: Upload
+      submit: Enviar
