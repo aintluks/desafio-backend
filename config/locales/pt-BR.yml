@@ -1,4 +1,21 @@
 pt-BR:
+  time:
+    formats:
+      default: "%d/%m/%Y"
+  date:
+    abbr_month_names:
+      - jan
+      - fev
+      - mar
+      - abr
+      - mai
+      - jun
+      - jul
+      - ago
+      - set
+      - out
+      - nov
+      - dez
   number:
     currency:
       format:
@@ -6,3 +23,21 @@ pt-BR:
         delimiter: '.'
         separator: ','
         precision: 2
+  activerecord:
+    models:
+      expense:
+        one: Despesa
+        other: Despesas
+    attributes:
+      expense:
+        vlr_liquido: Valor Líquido
+        txt_fornecedor: Fornecedor
+        dat_emissao: Data de emissão
+        url_documento: Link nota fiscal
+  expenses:
+    show:
+      title: Despesas pela Cota para Exercício da Atividade Parlamentar
+      higher_spending: Maior valor gasto foi de
+      spending_total: Total gasto foi de
+      info: "ps: maior(es) gasto(s) está demarcado dentro da tabela"
+      url_document: Link nota fiscal
