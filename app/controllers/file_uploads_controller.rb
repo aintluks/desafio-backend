@@ -1,10 +1,11 @@
 class FileUploadsController < ApplicationController
   def create
-    @file_upload = FileUpload.new(file_upload_params)
-    @file_exists = FileUpload.find_by_filename(file_upload_params[:csv_file].original_filename)
+    @params = file_upload_params
+    @file_upload = FileUpload.new(@params)
 
-    if !@file_exists.present? && @file_upload.save
-      CsvImporter.perform(@file_upload.csv)
+    if valid_file
+      CsvImporterJob.perform_async(@file_upload.csv)
+      flash[:alert] = t('notices.file_to_queue')
     else
       flash[:alert] = t('notices.file_exists')
     end
@@ -13,6 +14,12 @@ class FileUploadsController < ApplicationController
   end
 
   private
+
+  def valid_file
+    file = FileUpload.find_by_filename(@params[:csv_file].original_filename)
+
+    !file.present? && @file_upload.save
+  end
 
   def file_upload_params
     params.require(:file_upload).permit(:csv_file)

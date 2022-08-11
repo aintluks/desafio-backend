@@ -4,6 +4,7 @@ pt-BR:
       default: "%d/%m/%Y"
   notices:
     file_exists: Arquivo já existe.
+    file_to_queue: Arquivo sendo processado...
   date:
     abbr_month_names:
       - jan
@@ -45,7 +46,6 @@ pt-BR:
       url_document: Link nota fiscal
   deputies:
     index:
-      no_data: Não temos dados...
       title: Deputados do Estado do Piauí
       info_message: "Faça upload de algum %{href} para visualizar os dados."
       link_to: arquivo de despesas

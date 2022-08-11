@@ -1,13 +1,8 @@
 <main class="main-deputy">
 	<% if !@deputies.present? %>
-		<section class="py-5 text-center container">
-			<div class="row py-lg-5">
-				<div class="col-lg-6 col-md-8 mx-auto">
-					<h1 class="fw-light"><%= t('.no_data') %></h1>
-					<p class="lead text-muted">
-						<%= info_message %>
-					</p>
-				</div>
+		<section class="py-5 container">	
+			<div class="text-center fs-4">
+				<p class="text-muted"><%= info_message %></p>
 			</div>
 		</section>
 	<% else %>
