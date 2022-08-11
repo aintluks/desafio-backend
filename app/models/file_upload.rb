@@ -1,6 +1,8 @@
 class FileUpload < ApplicationRecord
   has_one_attached :csv_file
 
+  scope :find_by_filename, -> (filename) { where(filename: filename) }
+
   after_save :set_filename
 
   def csv

@@ -2,6 +2,8 @@ pt-BR:
   time:
     formats:
       default: "%d/%m/%Y"
+  notices:
+    file_exists: Arquivo já existe.
   date:
     abbr_month_names:
       - jan

@@ -8,19 +8,19 @@ class CsvImporter
     @expenses_fields = {}
   end
 
-  def self.perform(csv:)
+  def self.perform(csv)
     new(csv).perform
   end
 
   def perform
     CSV.foreach(@csv, liberal_parsing: true, headers: true, col_sep: ";") do |row|
-      row['sgUF'] == @state ? deputy_fields(row) && expenses_fields(row) && create_deputy_and_expenses : next
+      row['sgUF'] == @state ? deputy_fields(row) && expenses_fields(row) && populate : next
     end
   end
 
   private
 
-  def create_deputy_and_expenses
+  def populate
     deputy = Deputy.find_or_create_by!(@deputy_fields)
     deputy.expenses.create!(@expenses_fields)
   end

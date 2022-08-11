@@ -5,7 +5,7 @@ RSpec.describe CsvImporter do
     let(:file_upload) { "#{Rails.root}/spec/fixtures/dados-abertos.csv" }
 
     context 'uploads a valid csv file' do
-      subject { described_class.perform(csv: file_upload) }
+      subject { described_class.perform(file_upload) }
 
       it 'creates 3 deputies' do
         expect { subject }.to change { Deputy.count }.by(3)
