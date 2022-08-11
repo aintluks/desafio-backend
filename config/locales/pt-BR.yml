@@ -41,3 +41,11 @@ pt-BR:
       spending_total: Total gasto foi de
       info: "ps: maior(es) gasto(s) está demarcado dentro da tabela"
       url_document: Link nota fiscal
+  deputies:
+    index:
+      no_data: Não temos dados...
+      title: Deputados do Estado do Piauí
+      info_message: "Faça upload de algum %{href} para visualizar os dados."
+      link_to: arquivo de despesas
+      expenses: Despesas
+      political_party: Partido

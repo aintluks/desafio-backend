@@ -1,21 +1,18 @@
-<main>
+<main class="main-deputy">
 	<% if !@deputies.present? %>
 		<section class="py-5 text-center container">
 			<div class="row py-lg-5">
 				<div class="col-lg-6 col-md-8 mx-auto">
-					<h1 class="fw-light">Não temos dados...</h1>
-					<p class="lead text-muted">Faça upload de algum
-						<a target="_blank" href="https://dadosabertos.camara.leg.br/swagger/api.html#staticfile">
-							arquivo de despesas
-						</a>
-						para visualizar os dados.
+					<h1 class="fw-light"><%= t('.no_data') %></h1>
+					<p class="lead text-muted">
+						<%= info_message %>
 					</p>
 				</div>
 			</div>
 		</section>
 	<% else %>
 		<div class="album py-5 bg-light">
-			<h1 class="fw-light text-center">Deputados do Estado do Piauí</h1>
+			<h1 class="fw-light text-center pb-5"><%= t('.title') %></h1>
 			<div class="container">
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 					<% @deputies.each do |deputy| %>
@@ -28,8 +25,8 @@
 									<div class="col-md-8">
 										<div class="card-body">
 											<p class="card-title"><strong><%= deputy.tx_nome_parlamentar %></strong></p>
-											<p class="card-text">Partido: <%= deputy.sg_partido %></p>
-											<%= link_to "Despesas", expenses_path(deputy), class: "btn btn-primary text-end" %>
+											<p class="card-text"><%= t('.political_party') %>: <%= deputy.sg_partido %></p>
+											<%= link_to t('.expenses'), expenses_path(deputy), class: "btn btn-primary text-end" %>
 										</div>
 									</div>
 								</div>
