@@ -1,13 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="<%= root_path %>">DesafioBackend</a>
+		<a class="navbar-brand" href="<%= root_path %>"><%= t('.title') %></a>
 		<div class="collapse navbar-collapse">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="<%= root_path %>">Inicío</a>
+						<a class="nav-link active" aria-current="page" href="<%= root_path %>">
+							<%= t('.home') %>
+						</a>
 				</li>
 			</ul>
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileModal">Upload do Arquivo</button>
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileModal">
+				<%= t('.file_upload') %>
+			</button>
 		</div>
 	</div>
 </nav>

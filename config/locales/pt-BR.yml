@@ -54,3 +54,8 @@ pt-BR:
       title: Upload do Arquivo
       upload: Upload
       submit: Enviar
+  navbar:
+    index:
+      title: Desafio Backend
+      home: Inicío
+      file_upload: Upload do Arquivo
