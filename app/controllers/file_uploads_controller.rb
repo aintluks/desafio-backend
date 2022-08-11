@@ -5,7 +5,7 @@ class FileUploadsController < ApplicationController
 
     if valid_file
       CsvImporterJob.perform_async(@file_upload.csv)
-      flash[:alert] = t('notices.file_to_queue')
+      flash[:notice] = t('notices.file_to_queue')
     else
       flash[:alert] = t('notices.file_exists')
     end
