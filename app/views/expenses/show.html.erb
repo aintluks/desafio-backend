@@ -1,39 +1,41 @@
-<div class="text-center m-2">
-  <h2>Despesas pela Cota para Exercício da Atividade Parlamentar</h2>
-  <h3>Maior valor gasto foi de: <%= number_to_currency(@higher_spending, locale: "pt-BR") %></h3>
-  <h3>Total gasto foi de: <%= number_to_currency(@total, locale: "pt-BR") %></h3>
-</div>
+<div class="expense-detail">
+  <div class="text-center m-2">
+    <h2><%= t('.title') %></h2>
+    <h3><%= t('.higher_spending') %>: <%= to_currency(@higher_spending) %></h3>
+    <h3><%= t('.spending_total') %>: <%= to_currency(@total) %></h3>
+  </div>
 
-<!-- chartkick <3 -->
-<div class="m-5">
-  <%= column_chart @data, colors: ["#b00", "#666"] %>
-</div>
+  <!-- chartkick <3 -->
+  <div class="m-5">
+    <%= column_chart @data %>
+  </div>
 
-<div class="m-5">
-  <em>ps: maior(es) gasto(s) está demarcado dentro da tabela</em>
-</div>
+  <div class="m-5">
+    <em><%= t('.info') %></em>
+  </div>
 
-<div class="p-5 m-2">
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">Valor</th>
-          <th scope="col">Estabelecimento</th>
-          <th scope="col">Data Emissão</th>
-          <th scope="col">Nota Fiscal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @expenses.each do |expense| %>
-          <tr class="<%= 'bg-danger' if expense.vlr_liquido == @higher_spending %>">
-            <td><%= number_to_currency(expense.vlr_liquido, locale: "pt-BR") %></td>
-            <td><%= expense.txt_fornecedor %></td>
-            <td><%= I18n.l(expense.dat_emissao, format: :default) if expense.dat_emissao %></td>
-            <td><a target="blank_" href="<%= expense.url_documento %>">Link nota fiscal</a></td>
+  <div class="p-5 m-2">
+    <div class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col"><%= Expense.human_attribute_name :vlr_liquido %></th>
+            <th scope="col"><%= Expense.human_attribute_name :txt_fornecedor %></th>
+            <th scope="col"><%= Expense.human_attribute_name :dat_emissao %></th>
+            <th scope="col"><%= Expense.human_attribute_name :url_documento %></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @expenses.each do |expense| %>
+            <tr class="<%= html_class(expense.vlr_liquido, @higher_spending) %>">
+              <td><%= to_currency(expense.vlr_liquido) %></td>
+              <td><%= expense.txt_fornecedor %></td>
+              <td><%= to_date_format(expense.dat_emissao) %></td>
+              <td><a target="blank_" href="<%= expense.url_documento %>"><%= t('.url_document') %></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
