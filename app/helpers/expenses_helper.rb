@@ -1,6 +1,6 @@
 module ExpensesHelper
   def to_currency(value)
-    number_to_currency(value, locale: "pt-BR")
+    number_to_currency(value, locale: "pt-BR") || ''
   end
 
   def to_date_format(date)
