@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2022_08_07_142207) do
 
   create_table "deputies", force: :cascade do |t|
     t.string "tx_nome_parlamentar"
-    t.string "cpf"
     t.string "ide_cadastro"
     t.string "foto"
     t.string "sg_uf"
@@ -52,8 +51,6 @@ ActiveRecord::Schema.define(version: 2022_08_07_142207) do
     t.datetime "dat_emissao"
     t.string "txt_fornecedor"
     t.decimal "vlr_liquido", precision: 8, scale: 2
-    t.string "num_mes"
-    t.string "num_ano"
     t.string "url_documento"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
